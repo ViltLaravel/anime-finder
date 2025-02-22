@@ -3,11 +3,9 @@
     <Disclosure as="nav" class="border-b border-gray-200 bg-white" v-slot="{ open }">
       <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div class="flex h-16 justify-between">
-          <div class="flex space-x-4">
+          <div class="flex w-full">
             <div class="flex flex-shrink-0 items-center">
-              <img class="block h-8 w-auto lg:hidden"
-                src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600" alt="Your Company" />
-              <img class="hidden h-8 w-auto lg:block" :src="Anime" alt="Your Company" />
+              <img class="block h-8 w-auto" :src="Anime" alt="Your Company" />
             </div>
             <div class="hidden sm:-my-px sm:ml-6 sm:flex sm:space-x-8">
               <button @click="emit('click')"
@@ -15,10 +13,6 @@
                 Finder</button>
               <button @click="emit('click')"
                 class="'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700', 'inline-flex items-center border-b-2 px-1 pt-1 text-sm font-medium'">Developer</button>
-            </div>
-            <div class="flex items-center w-[500px] sm:w-[280px] md:w-[400px]">
-              <input type="text" v-model="model" id="search" placeholder="Search for an anime, e.g 'Naruto'"
-                class="w-full rounded-md border-0 py-1.5 px-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" />
             </div>
           </div>
           <div class="-mr-2 flex items-center sm:hidden">
@@ -48,7 +42,11 @@
 
     <div class="p-10">
       <main>
-        <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
+        <div class="mx-auto max-w-7xl flex flex-col gap-4 md:px-6 lg:px-8">
+          <div class="flex items-center w-full md:w-[400px]">
+            <input type="text" v-model="model" id="search" placeholder="Search for an anime, e.g 'Naruto'"
+              class="w-full rounded-md border-0 py-1.5 px-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" />
+          </div>
           <slot />
         </div>
       </main>

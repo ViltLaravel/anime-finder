@@ -1,6 +1,7 @@
 <template>
   <Layout v-model="searchAnime" @click="showDev">
-    <Content :anime="anime" />
+    <div v-if="isLoading">Loading anime....</div>
+    <Content v-else :anime="anime" />
   </Layout>
   <Developer :show="show" @close="hideDev" />
 </template>
@@ -41,10 +42,13 @@ interface Anime {
 
 const searchAnime: any = ref('')
 const anime: any = ref<Anime[]>([])
+const isLoading = ref<boolean>(false)
 const fetchAnime = async () => {
+  isLoading.value = true;
   try {
     const res = await axios.get('https://api.jikan.moe/v4/anime');
     if (res) {
+      isLoading.value = false;
       anime.value = res.data.data
     }
   } catch (error) {
